@@ -4,8 +4,8 @@ Simple GET/POST Requests for MQL4 using wininet
 *No need to add the URLs in MetaTrader 4 settings*
 
 ## Usage
-Copy the mqh file to "MetaTrader4 DataFolder/MQL4/Include/"
-Copy the example script file to "MetaTrader4 DataFolder/MQL4/Script/"
+* Copy the mqh file to "MetaTrader4 DataFolder/MQL4/Include/"
+* *(Optinal)* Copy the example script file to "MetaTrader4 DataFolder/MQL4/Script/"
 
 ## GET Method
 ```string getRequest(string url, string headers = "", string protocol = "https", int port = 0)```
