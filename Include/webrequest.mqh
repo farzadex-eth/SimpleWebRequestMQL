@@ -29,7 +29,7 @@
 //+------------------------------------------------------------------+
 //| GET Request                                                     |
 //+------------------------------------------------------------------+
-string getRequest(string url, string headers = "", string protocol = "https", int port = 0) {
+string getRequest(string url, string params = "", string headers = "", string protocol = "https", int port = 0) {
 
    string urlSplit[];
    char body[];
@@ -39,7 +39,7 @@ string getRequest(string url, string headers = "", string protocol = "https", in
    
    StringSplit(url, '/', urlSplit);
    string serverName = urlSplit[0];
-   string path = StringSubstr(url, StringFind(url, "/"));
+   string path = StringSubstr(url, StringFind(url, "/")) + "?" + params;
    
    string acceptTypes[1] = {"*/*"};
    
