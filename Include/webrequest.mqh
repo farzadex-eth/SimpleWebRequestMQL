@@ -21,7 +21,7 @@
    int InternetOpenUrlW(int, string, string, int, int, int);
    int InternetReadFile(int, uchar &sBuffer[], int, int& OneInt);
    int InternetCloseHandle(int); 
-   int HttpOpenRequestW(int, string, string, string, string, string& AcceptTypes[], int, int);
+   int HttpOpenRequestW(int, string, string, string, string, int AcceptTypes, int, int);
    int HttpSendRequestW(int hRequest,string &lpszHeaders,int dwHeadersLength,uchar &lpOptional[],int dwOptionalLength);
    bool InternetGetConnectedState(LPDWORD lpdwFlags, DWORD dwReserved);
 #import
@@ -48,7 +48,7 @@ string getRequest(string url, string params = "", string headers = "", string pr
       Alert("Check your Internet Connection and Try Again");
    }  
    int HttpConnect = InternetConnectW(HttpOpen, serverName, portNum, "", "", 3, 0, 0); 
-   int HttpRequest = HttpOpenRequestW(HttpConnect, "GET", path, "", "", acceptTypes, 0x00800000, 0);   
+   int HttpRequest = HttpOpenRequestW(HttpConnect, "GET", path, "", "", 0, 0x00800000, 0);   
    bool result = HttpSendRequestW(HttpRequest, headers, StringLen(headers), body, ArraySize(body)-1);
    
    uchar ch[500];
@@ -98,7 +98,7 @@ string postRequest(string url, string data, string headers = "Content-Type: appl
       Alert("Check your Internet Connection and Try Again");
    }  
    int HttpConnect = InternetConnectW(HttpOpen, serverName, portNum, "", "", 3, 0, 0); 
-   int HttpRequest = HttpOpenRequestW(HttpConnect, "POST", path, "", "", acceptTypes, 0x00800000, 0);   
+   int HttpRequest = HttpOpenRequestW(HttpConnect, "POST", path, "", "", 0, 0x00800000, 0);   
    bool result = HttpSendRequestW(HttpRequest, headers, StringLen(headers), body, ArraySize(body)-1);
    
    uchar ch[500];
